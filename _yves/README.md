@@ -37,7 +37,7 @@ Contain multiple methods for data processing and utilitary methods necessary to 
 - **`add_constant_columns`** Add front column made of 1s
 - **`get_overall_predictions`** Compute the overall prediction using the weights of all 3 jets
 
-### `implementations.py`
+### implementations.py
 Contain the 6 regression methods needed for this project
 - **`least_squares_GD`**: Linear regression using gradient descent
 - **`least_squares_SGD`**: Linear regression using stochastic gradient descent
@@ -51,9 +51,9 @@ Helper function for logistic regression
 
 * **`learning_by_gradient_descent`** One step of gradient descen using logistic regression
 
-### `proj1_helpers.py`
+### proj1_helpers.py
 
 Contain functions used to load the data and generate a CSV submission file.
 
-### `run.py`
+### run.py
 Script that generates the exact CSV file submitted on Kaggle.

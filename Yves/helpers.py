@@ -132,4 +132,18 @@ def add_constant_columns(tx):
     tx = np.hstack((np.ones((tx.shape[0], 1)), tx))
 
     return tx
+	
+def get_overall_predictions(xx, weight_array, degree_array, jet_indices):
+    """
+    Compute the overall prediction using the weights of
+    all 3 jet subsets.
+    """
+    tx = []
+    for jet in range(3):
+        tx.append(build_poly_matrix(xx[jet], degree_array[jet]))
+        
+    #compute the predictions
+    y_p = arrange_prediction(weight_array, tx, jet_indices)
+    
+    return y_p
 

@@ -4,7 +4,7 @@ This is the repository for the Machine Learning EPFL course first project.
 
 This file explains the organisation and functions of the python scripts. For more information about the implementation, see the [PDF reports](https://github.com/rakachan/Machinus-Learningus/tree/master/Rapport) and the commented code.
 
-First, you should place `train.csv` and `test.csv` in a `data` folder at the root of the project.
+First, you should place `train.csv` and `test.csv` in a `\data` folder at the root of the project.
 
 ### ML_project_1.ipynb
 

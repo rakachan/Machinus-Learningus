@@ -39,9 +39,9 @@ We were given the data in two csv files: a training set and a testing set. In bo
 
 \item \textit{Missing values}: After this jet separation, any value left with \{-999\} is replaced with \{0\}.
 
-\item \textit{Data Normalization}: For each \textit{jet} value, we standardize the data by subtracting the mean and dividing by the variance. This helps reduce the range of the variable and thus help to prevent overflow.
+\item \textit{Data Normalization}: For each \textit{jet} value, we standardize the data by subtracting the mean and dividing by the variance. This helps reducing the range of the variable and thus helps preventing overflow.
 
-\item \textit{Features augmentation}: Finally, to increase the family of functions we can find, we added for each columns the \textit{sin} and \textit{cos} of the columns, and for each positive columns (that is all elements > 0), we added the square root and natural logarithm of the column.
+\item \textit{Features augmentation}: Finally, in order to increase the family of functions we can find, we added for each column the \textit{sin} and \textit{cos} of the column, and for each column that only has positive elements, we added the square root and natural logarithm of the column.
 \end{enumerate}
 
 \section{Models}
@@ -52,18 +52,18 @@ Those models were tested (the results are displayed in a table below):
 \item Least squares:\\
 \hspace*{3mm}This was the first model that we tried to get some sort of baseline.
 \item Ridge regression:\\
-\hspace*{3mm}This is the best model for our processed data, with different values of the hyper-parameter lambda. We also applied another transformation for this model : we raised all the columns from the power 1 to a certain degree d, which we also treated like an hyper-parameter. \\As you will see with the plots, le smaller the lambda, the higher the accuracy. But this caused over fitting which reduced the score in Kaggle so we set the lambda to be at least 1e-08. 
+\hspace*{3mm}This is the best model for our processed data, with different values of the hyper-parameter lambda. We also applied another transformation for this model : we raised all the columns from the power 1 to a certain degree d, which we also treated like an hyper-parameter. \\As you will see with the plots, the smaller the lambda, the higher the accuracy. But a lambda that is too small cause over fitting which reduce the score on Kaggle so we set the lambda to be at least 1e-08. 
 \item Regularized logistic regression:\\
-\hspace*{3mm}For this model we had to transform the given classification from {-1, 1} to {0, 1}. The prediction method was then also changed to first apply the sigmoid to the prediction (obtained from np.dot(xn, w)) and then change the prediction threshold to 0.5. 
+\hspace*{3mm}For this model we had to transform the given classification from \{-1, 1\} to \{0, 1\}. The prediction method was then also changed to first apply the sigmoid to the prediction (obtained from np.dot(xn, w)) and then set the prediction threshold to 0.5. 
 \end{itemize}
 
 For all models, the best values for the hyper-parameters were determined using grid search.
 
 \subsection{Cross-validation}
-In order to correctly estimate the training and test error, each model was tested using a 10-fold cross-validation, a method in which the data is split in 10 subset. Each subset is then used as a test subset while the rest is the train subset. Both the train and test error are then averaged from all 10 folds, which gives more accuracy to those errors, and help to not over fit the training set.
+In order to correctly estimate the training and test error, each model was tested using a 4-fold cross-validation, a method in which the data is split in 4 subsets. Each subset is then used as a test subset while the rest is the train subset. those errors are then averaged over those said subsets, which gives a meaningful insight on whether or not we over fit.
 
 \subsection{Model accuracy}
-In order to evaluate our models, we used its accuracy, which we computed this way : Using the data and the obtained weights, we make the prediction 'yn', and then compare it to the known classification. We then took the percentage of correct values we predicted
+In order to evaluate our models, we used its accuracy, which we computed this way : using the data and the obtained weights, we make the prediction 'yn', and then compare it to the known classification. We then took the percentage of correct values we predicted.
 
 \end{multicols*}
 \newpage
@@ -101,9 +101,9 @@ The table below summarizes the results. Note that we only display the plots and 
 \end{table}
 
 \section{Conclusion}
-As we can see in the table, least squares has the highest accuracy, but we selected the model with the best score in Kaggle, ridge regression. This certainly comes from the fact that Least square has no lambda hyper-parameter to penalize over fitting. Because of this, the local score wasn't always equivalent to the kaggle score.\\
+As we can see in the table, least squares has the highest accuracy, but we selected the model with the best score on Kaggle, ridge regression. This certainly comes from the fact that least squares has no lambda hyper-parameter to penalize over fitting. Because of this, the local score wasn't always equivalent to the kaggle score.\\
 
-It is worth saying that we tried a method which would determine which two columns we should add the product the the features in order to increase the score, but even after determining which columns product to add for each jet, the total accuracy was smaller.
+It is worth saying that we tried a method which would determine which two columns we should add the product to the features in order to increase the score, but even after determining which columns product to add for each jet, the total accuracy was smaller.
 
 
 \end{document}

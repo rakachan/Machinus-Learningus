@@ -25,20 +25,19 @@ Contain helper methods for cross validation.
 
 ### helpers.py
 Contain multiple methods for data processing and utilitary methods necessary to achieve the regression methods:
-- ​
 - **`sigmoid`** Apply the sigmoid function
 - **`calculate_gradient_log`** Compute the gradient for log likelihood function
 - **`batch_iter`** Generate a minibatch iterator for a dataset
 - **`build_poly_matrix`** Add columns to the matrix which are powers of all columns raised to [2,…,degree + 1]
 - **`standardize`** Standardize the original data set
-- **`build_k_indices`** 
+- **`build_k_indices`** Build k indices for k-fold
 - **`accuracy`** Compute the accuracy of the prediction
 - **`arrange_prediction`** Return the prediction of y in the original order 
 - **`add_constant_columns`** Add front column made of 1s
 - **`get_overall_predictions`** Compute the overall prediction using the weights of all 3 jets
 
 ### implementations.py
-Contain the 6 regression methods needed for this project
+Contain the 7 regression methods needed for this project
 - **`least_squares_GD`**: Linear regression using gradient descent
 - **`least_squares_SGD`**: Linear regression using stochastic gradient descent
 - **`least_squares`**: Least squares regression using normal equations

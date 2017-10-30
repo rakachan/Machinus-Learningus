@@ -61,6 +61,7 @@ for jet in range(3):
     lambda_arr.append(best_lambda)
     degree_arr.append(best_degree)
 
+print('Training done, creating submission.')
 #get the prediction for the testing set
 y_p_te = get_overall_predictions(xx_te, w_arr, degree_arr, jet_indices_te)
 create_csv_submission(ids_te, y_p_te, "submission.csv")

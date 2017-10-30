@@ -98,10 +98,11 @@ def build_product(data):
 def process_data(x, degree):
 	# Ignore first column as it sometimes has -999 in it.
 	data = np.delete(x, [0], axis = 1)
-	data = np.hstack((np.ones((x.shape[0], 1)), x))
-	data = np.append(build_poly(data, degree), build_product(data), axis = 1)
+	data, _, _ = standardize(data)
+	data = np.hstack((np.ones((data.shape[0], 1)), data))
+	"""data = np.append(build_poly(data, degree), build_product(data), axis = 1)
 	data = np.append(data, np.cos(x), axis = 1)
-	data = np.append(data, np.sin(x), axis = 1)
+	data = np.append(data, np.sin(x), axis = 1)"""
 	
 	return data
 	
@@ -147,3 +148,16 @@ def batch_iter(y, tx, batch_size, num_batches=1, shuffle=True):
         end_index = min((batch_num + 1) * batch_size, data_size)
         if start_index != end_index:
             yield shuffled_y[start_index:end_index], shuffled_tx[start_index:end_index]
+
+def compute_gradient(y, tx, w):
+    """Compute the gradient for MSE."""
+    e = y - tx@w
+    return (-1/len(y))*tx.transpose()@e
+    
+def standardize(x):
+    """Standardize the original data set."""
+    mean_x = np.mean(x)
+    x = x - mean_x
+    std_x = np.std(x)
+    x = x / std_x
+    return x, mean_x, std_x

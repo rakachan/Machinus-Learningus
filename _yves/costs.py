@@ -18,4 +18,4 @@ def calculate_log_likelihood(y, tx, w, lambda_):
     t = tx@w
     s = np.logaddexp(0, t).flatten()
     
-    return (s - y*t).sum() + lambda_*(w.T@w)
+    return (s - y*t).sum() + (lambda_/2)*(w.T@w)

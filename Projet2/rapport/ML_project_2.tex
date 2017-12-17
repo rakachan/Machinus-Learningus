@@ -119,8 +119,8 @@ Also, the score we got in local for the test data (10\% of the whole thing) is c
 For the computation of the error, we used the \textit{RMSE} over the given entries. This is also what is used in the Kaggle competition.  
 $$ RMSE(W, Z) := \sqrt{\frac{1}{|\Omega|} \sum\nolimits_{(d, n) \in \Omega} [\textit{x\textsubscript{dn}} - (WZ^\top)\textsubscript{\textit{dn}}]^2} $$
 Where \(\Omega\) is the set of all our given entries in the ratings matrix, \(W\) is the feature matrix of the users (dimension 10000 x K) and \(Z\) the feature matrix of the items (dimension 1000 x K).
-
-
+\paragraph{}
+For the kaggle submission, we tried to submit rounded (to the nearest int) and unrounded submission. We quickly found out that unrounded submissions yield the best score.
 
 %=================================================================================================================
 %=================================================================================================================

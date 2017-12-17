@@ -23,6 +23,9 @@ First, you should place `data_train.csv` and `sample_submission.csv` at the root
 
 And you should be able to use pyspark and run 'run.py'
 
+### Installing Nimfa
+
+Simply do : **`pip install nimfa`**
 
 ### Project 2.ipynb
 

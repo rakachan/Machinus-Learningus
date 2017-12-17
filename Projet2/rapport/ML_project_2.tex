@@ -80,7 +80,13 @@ This method, while quite simple, was too slow, and we didn't get very good resul
 The used a parameter \textit{gamma}=0.02 (found via grid search) and a number of epochs=20 (with a higher number of epochs the error only improved marginally).
 \item \textbf{Alternating least squares with bias estimation (ALS):}  
 
-For this model, we tested both the standard version from lab 10 and one where we also took into consideration the bias of the ratings. For the last one we computed the average of all ratings, the average rating per user and then the average rating per item. Those fixed values were included in the computation of the new features for users and items, and we adapted our error and results-exporting functions to take it into account.  
+For this model, we tested both the standard version from lab 10 and one where we also took into consideration the bias of the ratings. Here's a quick explanation on what the bias we are talking about is:
+Each user's and item's mean rating might differs a bit from the global mean, whether it be because an
+item is actually objectively good or because a user is prompt to give only good ratings (hence the
+term "bias").
+As such, to take it into account, we computed the average of all ratings, the average rating per user
+and then the average rating per item.
+Those fixed values were included in the computation of the new features for users and items, and we adapted our error and results-exporting functions to take it into account.  
 \paragraph{}
 While one could think the best bias estimation wouldn't consider the empty entries of the ratings sparse matrix, we had better results by taking them for the global, user and item mean (thus our means were often small).
 \paragraph{}

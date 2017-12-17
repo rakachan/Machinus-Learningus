@@ -11,12 +11,16 @@ First, you should place `data_train.csv` and `sample_submission.csv` at the root
 - Download latest spark here: http://spark.apache.org/downloads.html
 - Extract the archive in a path without spaces, let's call this path spark_path.
 - Define these new environment variables:
+
 **`SPARK_HOME spark_path\spark-2.1.0-bin-hadoop2.7`**
+
 **`HADOOP_HOME spark_path\spark-2.1.0-bin-hadoop2.7`**
 - Then add this to the already existing environment variable named PATH:
+
 **`spark_path\spark-2.1.0-bin-hadoop2.7\bin`**
 - Finally, enter this command in a prompt:
 **`pip install findspark`**
+
 And you should be able to use pyspark and run 'run.py'
 
 

@@ -5,6 +5,7 @@ from itertools import groupby
 
 import numpy as np
 import scipy.sparse as sp
+import csv
 
 
 def read_txt(path):
@@ -73,3 +74,22 @@ def calculate_mse(real_label, prediction):
     """calculate MSE."""
     t = real_label - prediction
     return 1.0 * t.dot(t.T)
+
+def row_col_spark(x, reg):
+    result = reg.findall(str(x))[0]
+    return int(result[0])-1, int(result[1])-1
+
+def create_csv_submission(pred_nonzero, approx, name, round_=False):
+    with open(name, 'w', newline='') as csvfile:
+        fieldnames = ['Id', 'Prediction']
+        writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
+        writer.writeheader()
+        for row, col in pred_nonzero:
+            ids = 'r' + str(row+1) + '_c' + str(col+1)
+            
+            if round_:
+                value = round(approx[row, col])
+            else:
+                value = approx[row, col]
+                
+            writer.writerow({'Id':ids,'Prediction':value})

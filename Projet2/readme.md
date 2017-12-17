@@ -8,7 +8,7 @@ First, you should place `data_train.csv` and `sample_submission.csv` at the root
 
 You will also need to install PySpark and FindSpark
 
-### ML_project_1.ipynb
+### Project 2.ipynb
 
 Python notebook used to train the model of this project.
 This notebook keeps track of all the methods and models we tried for this project: 

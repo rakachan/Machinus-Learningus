@@ -28,6 +28,7 @@
 
 %=================================================================================================================
 %=================================================================================================================
+\begin{multicols*}{2}
 
 
 \section{Introduction}
@@ -53,15 +54,9 @@ For some of the data processing we used functions from the lab 10 correction, wi
 \begin{enumerate}
 \item \textit{Importing data} : With almost all our algorithms, we needed the data to be in a matrix form. We used the sparse format from the Scipy library for efficiency. The loading algorithm reads the .csv file line by line, split the row and column index and subtracts 1 to them (since the indexes of the file begin at 1). We then use those coordinates to fill the sparse matrix with the corresponding ratings.
 
-\item \textit{Exploring the data} : Our data consist of 1'176'952 ratings given by 10'000 users for 1'000 items (almost 11.77\% of the possible ratings). Using some statistics we got from the data importation part, we can plot the number of ratings per user, and also per item (number of ratings given to that item). From those stats, we found that each user in our data has rated at least 3 items, and that each items has at least 8 reviews. This means that we won't have to drop useless users or items. 
+\item \textit{Exploring the data} : Our data consist of 1'176'952 ratings given by 10'000 users for 1'000 items (almost 11.77\% of the possible ratings). Using some statistics we got from the data importation part, we can plot the number of ratings per user, and also per item (number of ratings given to that item), as you can see in figure 1. From those stats, we found that each user in our data has rated at least 3 items, and that each items has at least 8 reviews. This means that we won't have to drop useless users or items. 
 \end{enumerate}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=8cm]{stat_ratings.png}
-  \label{fig:figure 1}
-  \caption{(Left) Sorted number of ratings per user. (Right) Sorted number of ratings for each item.}
-\end{figure}
 
 %=================================================================================================================
 %=================================================================================================================
@@ -122,6 +117,8 @@ Where \(\Omega\) is the set of all our given entries in the ratings matrix, \(W\
 \paragraph{}
 For the kaggle submission, we tried to submit rounded (to the nearest int) and unrounded submission. We quickly found out that unrounded submissions yield the best score.
 
+\end{multicols*}
+
 %=================================================================================================================
 %=================================================================================================================
 
@@ -130,6 +127,15 @@ For the kaggle submission, we tried to submit rounded (to the nearest int) and u
 \section{Results}
 We give here our best results for each model.
 While in local the ALS with bias is the best, on the kaggle competition, Spark is a little bit better. We also couldn't get any graph for Spark since we can't access the error during the computation.
+
+\mbox{}\\
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=8cm]{stat_ratings.png}
+  \label{fig:figure 1}
+  \caption{(Left) Sorted number of ratings per user. (Right) Sorted number of ratings for each item.}
+\end{figure}
+
 \mbox{}\\
 \begin{figure}[h]
   \centering

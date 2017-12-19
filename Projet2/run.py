@@ -41,7 +41,7 @@ lambda = {}   rank = {}
 
 # Build the recommendation model using Alternating Least Squares
 rank = r_s
-numIterations = 230
+numIterations = 250
 lambda_spark = l_s
 model = ALS.train(train2, rank, numIterations, lambda_=lambda_spark, nonnegative=True, seed=459832632)
 
@@ -90,4 +90,4 @@ for row in pred:
 path_dataset2 = "sample_submission.csv"
 sub_ex = load_data(path_dataset2)	
 	
-create_csv_submission(list(zip(*sub_ex.nonzero())), matrix_pred, 'banana_republic.csv')
+create_csv_submission(list(zip(*sub_ex.nonzero())), matrix_pred, 'submission.csv')

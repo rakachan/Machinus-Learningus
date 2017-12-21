@@ -23,9 +23,13 @@ First, you should place `data_train.csv` and `sample_submission.csv` at the root
 
 And you should be able to use pyspark and run 'run.py'
 
+You can find the documentation for the specific library we used at this adress : https://spark.apache.org/docs/2.2.0/mllib-collaborative-filtering.html
+
 ### Installing Nimfa
 
 Simply do : **`pip install nimfa`**
+
+The documentation can be found here : http://nimfa.biolab.si/
 
 ### Project 2.ipynb
 
